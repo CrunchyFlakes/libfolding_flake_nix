@@ -22,7 +22,8 @@
         # system.
 
         # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
-        packages.default = pkgs.callPackage ./libfolding.nix {};
+        packages.libfolding = pkgs.callPackage ./libfolding.nix {};
+        packages.default = self'.packages.libfolding;
       };
       flake = {
         # The usual flake attributes can be defined here, including system-
