@@ -10,7 +10,9 @@ stdenv.mkDerivation {
     sha256 = "sha256-6okxPF6LSB1gyGyZDwM1crt7fdANNk7AdnZCGPprUXw=";
   };
   installPhase = ''
-    mkdir -p $out
+    runHook preInstall
+    mkdir -p $out $out/lib $out/include
     make install INSTALL_LIB_DIR=$out/lib INSTALL_HEAD_DIR=$out/include
+    runHook postInstall
   '';
 }
